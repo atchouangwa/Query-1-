@@ -1,0 +1,52 @@
+/*
+* Author: Alex Tchouangwa 
+* Assignment:  Project 2
+* Due 09/06/2019
+*/
+
+/* 1. This query shows Hufflepuff’s crest */
+SELECT animal FROM hogwarts_houses WHERE house = 'Hufflepuff'; 
+
+/* 2. This query shows the years Sirius Black started and finished Hogwarts */
+SELECT start, finish FROM hogwarts_students WHERE first = 'Sirius' AND last = 'Black'; 
+
+/*3. This query shows students who started Hogwarts in 1947 */
+ SELECT first, last FROM hogwarts_students WHERE start = '1947';
+
+/*4. This query shows the relics for the Hogwarts Houses */
+SELECT relic FROM hogwarts_houses; 
+
+/*5.  This query shows how long Katie Bell was at Hogwarts */
+SELECT finish - start FROM hogwarts_students WHERE first = 'Katie' AND last = 'Bell';
+
+/*6. This query shows the students with unknown housing */ 
+SELECT first, last FROM hogwarts_students WHERE house IS NULL; 
+
+/*7. This query shows all of the Gryffindor students who started in 1991 */
+SELECT concat(first,' ' ,last) FROM hogwarts_students WHERE start = '1991'; 	
+
+/*8. This query shows the DADA Teacher whose first name does not begin with G but last Name starts with L */
+SELECT first, last FROM hogwarts_dada WHERE last LIKE 'L%' AND first NOT LIKE 'G%';
+
+/*9. This query shows the Weasley family sorted by years attended Hogwarts */
+SELECT first, last, start, finish FROM hogwarts_students WHERE last = 'Weasley' ORDER BY start;
+
+/*10. This query shows the names of the Houses sorted by animal */
+SELECT house FROM hogwarts_houses ORDER BY animal;
+
+/*11. This query shows all information on all Hufflepuff students */ 	
+SELECT * FROM hogwarts_students WHERE house = 'Hufflepuff' ORDER BY start, last; 
+
+/*12. This query shows the names and house colors of the Black Family */
+SELECT first, last, colors FROM hogwarts_students, hogwarts_houses WHERE last = 'Black' AND hogwarts_students.house = hogwarts_houses.house;
+
+/*13. This query shows who founded the house Parvati Patil sorted into */
+SELECT founder FROM hogwarts_students, hogwarts_houses WHERE first = 'Parvati' AND last = 'Patil' AND hogwarts_students.house = hogwarts_houses.house;
+
+/* 14. This query shows the names and houses of the DADA teachers who have student records */
+SELECT hogwarts_students.first,hogwarts_students. last, house FROM hogwarts_students, hogwarts_dada WHERE hogwarts_students.first = hogwarts_dada.first AND hogwarts_students.last = hogwarts_dada.last;
+
+
+
+
+
